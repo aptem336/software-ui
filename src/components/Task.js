@@ -34,22 +34,27 @@ export const Task = ({id}) => {
         }).then()
     }
     return (
-        <form action={'/task'}>
+        <form className={'form'} action={'/task'}>
+            <p className={'title'}>
+                Заполните форму
+                <button className={'submit'} onClick={complete}>Отправить</button>
+            </p>
             {
                 taskDeployedForm?.components?.map((component) => {
                     return <div>
                         <label>
-                            {component?.label}<br/>
-                            <input type={component?.type}
+                            {component?.label} {component?.validate?.required && '*'}<br/>
+                            <input className={'input'}
+                                   type={component?.type}
                                    value={taskFormVariables && taskFormVariables[component?.key]?.value}
                                    readOnly={component?.validate?.readonly}
+                                   disabled={component?.validate?.readonly}
                                    required={component?.validate?.required}
                                    onChange={event => onChange(event, component.key)}/><br/>
                         </label><br/>
                     </div>
                 })
             }
-            <button onClick={complete}>Завершить</button>
         </form>
     )
 }

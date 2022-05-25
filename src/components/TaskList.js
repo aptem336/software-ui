@@ -24,15 +24,23 @@ export const TaskList = () => {
             })
     }
     return (
-        <div className='task-list'>
-            {
-                taskList.map((task) => {
-                    return (
-                        <TaskTile id={task.id} name={task.name} assignee={task.assignee}/>
-                    )
-                })
-            }
-            <button onClick={startProcess}>Старт</button>
-        </div>
+        <>
+            <p className={'title'}>
+                Список задач
+                <button className={'submit'} onClick={startProcess}>Создать заявку на закупку ПО</button>
+            </p>
+            <div className='task-list'>
+                {
+                    taskList.map((task) => {
+                        return (
+                            <TaskTile id={task.id}
+                                      name={task.name}
+                                      assignee={task.assignee}
+                                      created={task.created}/>
+                        )
+                    })
+                }
+            </div>
+        </>
     )
 }
