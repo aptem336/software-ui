@@ -14,6 +14,15 @@ export const TaskList = () => {
                 setTaskList(response.data);
             })
     }
+    const startProcess = () => {
+        axios.post(`/engine-rest/process-definition/key/software/start`, {})
+            .then((response) => {
+                axios.get(`/engine-rest/task?processInstanceId=${response.data.id}`)
+                    .then((response) => {
+                        document.location = `/task/${response.data[0].id}`
+                    })
+            })
+    }
     return (
         <div className='task-list'>
             {
@@ -23,6 +32,7 @@ export const TaskList = () => {
                     )
                 })
             }
+            <button onClick={startProcess}>Старт</button>
         </div>
     )
 }
