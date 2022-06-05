@@ -9,18 +9,19 @@ export const TaskList = () => {
     }, []);
 
     const getTaskList = () => {
-        axios.get(`/engine-rest/task`)
+        axios.post(`/task`, {})
             .then((response) => {
                 setTaskList(response.data);
             })
     }
     const startProcess = () => {
-        axios.post(`/engine-rest/process-definition/key/software/start`, {})
+        axios.post(`/order/start`, {})
             .then((response) => {
-                axios.get(`/engine-rest/task?processInstanceId=${response.data.id}`)
-                    .then((response) => {
-                        document.location = `/task/${response.data[0].id}`
-                    })
+                axios.post(`/task`, {
+                    processInstanceId: response.data.processInstanceId
+                }).then((response) => {
+                    document.location = `/task/${response.data[0].id}`
+                })
             })
     }
     return (

@@ -10,13 +10,13 @@ export const Task = ({id}) => {
     }, []);
 
     const getTaskDeployedForm = () => {
-        axios.get(`/engine-rest/task/${id}/deployed-form`)
+        axios.get(`task/${id}/form`)
             .then((response) => {
                 setTaskDeployedForm(response.data);
             })
     }
     const getTaskFormVariables = () => {
-        axios.get(`/engine-rest/task/${id}/form-variables`)
+        axios.get(`/task/${id}/form-variables`)
             .then((response) => {
                 setTaskFormVariables(response.data);
             })
@@ -29,7 +29,7 @@ export const Task = ({id}) => {
         }
     }
     const complete = () => {
-        axios.post(`/engine-rest/task/${id}/complete`, {
+        axios.post(`/task/${id}/complete`, {
             variables: taskFormVariables
         }).then()
     }
