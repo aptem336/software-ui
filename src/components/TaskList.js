@@ -36,6 +36,7 @@ export const TaskList = () => {
                         return (
                             <TaskTile id={task.id}
                                       name={task.name}
+                                      orderNumber={task.orderNumber}
                                       assignee={task.assignee}
                                       created={task.created}/>
                         )
