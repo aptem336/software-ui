@@ -10,7 +10,7 @@ export const Task = ({id}) => {
     }, []);
 
     const getTaskDeployedForm = () => {
-        axios.get(`task/${id}/form`)
+        axios.get(`${id}/form`)
             .then((response) => {
                 setTaskDeployedForm(response.data);
             })
@@ -40,17 +40,17 @@ export const Task = ({id}) => {
                 <button className={'submit'} onClick={complete}>Отправить</button>
             </p>
             {
-                taskDeployedForm?.components?.map((component) => {
+                taskDeployedForm?.fields?.map((field) => {
                     return <div>
                         <label>
-                            {component?.label} {component?.validate?.required && '*'}<br/>
+                            {field?.label} {field?.validate?.required && '*'}<br/>
                             <input className={'input'}
-                                   type={component?.type}
-                                   value={taskFormVariables && taskFormVariables[component?.key]?.value}
-                                   readOnly={component?.validate?.readonly}
-                                   disabled={component?.validate?.readonly}
-                                   required={component?.validate?.required}
-                                   onChange={event => onChange(event, component.key)}/><br/>
+                                   type={field?.type}
+                                   value={taskFormVariables && taskFormVariables[field?.key]?.value}
+                                   readOnly={field?.readonly}
+                                   disabled={field?.readonly}
+                                   required={field?.required}
+                                   onChange={event => onChange(event, field.key)}/><br/>
                         </label><br/>
                     </div>
                 })
