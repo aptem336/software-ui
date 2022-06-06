@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const Task = ({id}) => {
     const [taskDeployedForm, setTaskDeployedForm] = useState();
-    const [taskFormVariables, setTaskFormVariables] = useState();
+    const [taskFormVariables, setTaskFormVariables] = useState(new Map());
     useEffect(() => {
         getTaskDeployedForm()
         getTaskFormVariables()
@@ -16,16 +16,16 @@ export const Task = ({id}) => {
             })
     }
     const getTaskFormVariables = () => {
-        axios.get(`/task/${id}/form-variables`)
+        axios.get(`/task/${id}/variables`)
             .then((response) => {
-                setTaskFormVariables(response.data);
+                setTaskFormVariables(new Map(Object.entries(response.data)));
             })
     }
     const onChange = (event, key) => {
         if (event.target.type === 'checkbox') {
-            taskFormVariables[key].value = event.target.checked
+            taskFormVariables.set(key, event.target.checked)
         } else {
-            taskFormVariables[key].value = event.target.value
+            taskFormVariables.set(key, event.target.value)
         }
     }
     const complete = () => {
