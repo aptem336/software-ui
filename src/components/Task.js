@@ -10,7 +10,7 @@ export const Task = ({id}) => {
     }, []);
 
     const getTaskDeployedForm = () => {
-        axios.get(`${id}/form`)
+        axios.get(`/task/${id}/form`)
             .then((response) => {
                 setTaskDeployedForm(response.data);
             })
@@ -46,7 +46,7 @@ export const Task = ({id}) => {
                             {field?.label} {field?.validate?.required && '*'}<br/>
                             <input className={'input'}
                                    type={field?.type}
-                                   value={taskFormVariables && taskFormVariables[field?.key]?.value}
+                                   value={taskFormVariables.get(field?.key)}
                                    readOnly={field?.readonly}
                                    disabled={field?.readonly}
                                    required={field?.required}
