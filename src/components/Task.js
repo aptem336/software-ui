@@ -29,9 +29,7 @@ export const Task = ({id}) => {
         }
     }
     const complete = () => {
-        axios.post(`/task/${id}/complete`, {
-            variables: taskFormVariables
-        }).then()
+        axios.post(`/task/${id}/complete`, Object.fromEntries(taskFormVariables)).then()
     }
     return (
         <form className={'form'} action={'/task'}>
