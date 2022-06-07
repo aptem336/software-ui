@@ -1,9 +1,19 @@
 body {
+    background-color: gray;
 }
 
 .title {
+    -webkit-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
     font-weight: bold;
     text-align: center;
+    background-color: white;
+    padding: 5px;
+}
+
+.title * {
+    margin-left: 5px;
 }
 
 .task-list {
@@ -29,6 +39,7 @@ body {
 
     text-align: center;
     color: #343a40;
+    background-color: white;
 }
 
 .task-tile p:not(:first-child) {
@@ -44,6 +55,7 @@ body {
 
     padding: 15px;
     margin: 50px;
+    background-color: white;
 }
 
 .input {
@@ -57,7 +69,6 @@ body {
     -moz-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
     box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
 
-    margin-left: 5px;
     padding: 5px;
 
     cursor: pointer;
