@@ -24,10 +24,18 @@ export const TaskList = () => {
                 })
             })
     }
+    const filterByOrderNumber = (event) => {
+        axios.post(`/task`, {
+            orderNumber: event.target.value
+        }).then((response) => {
+            setTaskList(response.data);
+        })
+    }
     return (
         <>
             <p className={'title'}>
                 Список задач
+                <input placeholder={'Номер заявки'} onInput={filterByOrderNumber}/>
                 <button className={'submit'} onClick={startProcess}>Создать заявку на закупку ПО</button>
             </p>
             <div className='task-list'>
