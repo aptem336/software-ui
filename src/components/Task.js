@@ -42,13 +42,24 @@ export const Task = ({id}) => {
                     return <div>
                         <label>
                             {field?.label} {field?.validate?.required && '*'}<br/>
-                            <input className={'input'}
-                                   type={field?.type}
-                                   value={taskFormVariables.get(field?.key)}
-                                   readOnly={field?.readonly}
-                                   disabled={field?.readonly}
-                                   required={field?.required}
-                                   onChange={event => onChange(event, field.key)}/><br/>
+                            {
+                                field?.type === 'select'
+                                    ? <select onChange={event => onChange(event, field.key)}>
+                                        {
+                                            field?.values.map((value) => {
+                                                return <option value={value.value}>{value.label}</option>
+                                            })
+                                        }
+                                    </select>
+                                    : <input className={'input'}
+                                             type={field?.type}
+                                             value={taskFormVariables.get(field?.key)}
+                                             readOnly={field?.readonly}
+                                             disabled={field?.readonly}
+                                             required={field?.required}
+                                             onChange={event => onChange(event, field.key)}/>
+                            }
+                            <br/>
                         </label><br/>
                     </div>
                 })
