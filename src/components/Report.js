@@ -17,6 +17,10 @@ export const Report = () => {
 
     return (
         <>
+            <p className={'title'}>
+                Отчёт по закупке ПО
+                <br/>
+            </p>
             <table className={'report'}>
                 <tr>
                     <th>Название ПО</th>
