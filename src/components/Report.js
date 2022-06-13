@@ -18,6 +18,12 @@ export const Report = () => {
     return (
         <>
             <p className={'title'}>
+                <button className={'submit'} onClick={() => {
+                    document.location = `/task`
+                }}>Список задач
+                </button>
+            </p>
+            <p className={'title'}>
                 Отчёт по закупке ПО
                 <br/>
             </p>

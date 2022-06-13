@@ -34,6 +34,12 @@ export const TaskList = () => {
     return (
         <>
             <p className={'title'}>
+                <button className={'submit'} onClick={() => {
+                    document.location = `/report`
+                }}>Отчёт по закупке ПО
+                </button>
+            </p>
+            <p className={'title'}>
                 Список задач
                 <input placeholder={'Номер заявки'} onInput={filterByOrderNumber}/>
                 <button className={'submit'} onClick={startProcess}>Создать заявку на закупку ПО</button>
